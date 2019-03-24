@@ -68,5 +68,11 @@ export class MainService {
     });
   }
 
+  discountBalance(user: User) {
+    return this.afDatabase.list(`users`).update(user.uidCard, {
+      balance: user.balance,
+    });
+  }
+
 
 }

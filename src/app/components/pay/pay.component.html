@@ -14,12 +14,12 @@
                 <h5>Pago de factura</h5>
               </div>
               <div class="input-field col s12">
-                <input id="icon_prefix" type="text" [(ngModel)]="bill.ref" name="ref" #billRef="ngModel" required
+                <input id="icon_prefix" type="text" [(ngModel)]="ref" name="ref" #billRef="ngModel" required
                   class="validate">
                 <label id="placeh" for="icon_prefix">Referencia de Pago</label>
               </div>
               <div class="input-field col s12">
-                <select (ngModelChange)="onchange($event)" [ngModel]="bill.nombre" name="selectevent">
+                <select (ngModelChange)="onchange($event)" required [ngModel]="bill.nombre" name="selectevent">
                   <option value="" disabled selected>Selecciona el usuario</option>
                   <option *ngFor="let user of users" value="{{user.uidCard}}">{{user.name}}</option>
                 </select>
@@ -34,6 +34,11 @@
                 placeholder="codigo"  class="validate">
                 
               </div>
+              <div class="input-field col s12">
+                  <input id="icon_telephone" type="number"  [(ngModel)]="bill.value" name="value" #codeUsr="ngModel" required
+                  placeholder="Valor"  class="validate">
+                  
+                </div>
               <div class="center-align">
                 <!--
                   <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!loginForm.form.valid">Ingresar</button> 

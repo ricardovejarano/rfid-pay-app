@@ -22,12 +22,77 @@ export class PayComponent implements OnInit {
   user: User = new User();
   users: User[];
   bill: Bill = new Bill();
+  ref = '';
+  myDate = '';
+  date = new Date();
+  allDate = [];
+  todayDate = '';
+  flag = false;
 
   constructor(public spinner: NgxSpinnerService, public mainService: MainService, public router: Router) { }
 
   ngOnInit() {
     this.initialiceParticles();
     this.getUsers();
+  }
+
+  paySubmit() {
+    this.spinner.show();
+    this.mainService.trueRegisterFLagPay()
+      .then(res => {
+        console.log(res);
+        this.compareuidCards();
+      }, err => {
+        console.log(err);
+      });
+  }
+
+  compareuidCards() {
+    console.log('dd');
+    this.mainService.getUidCardRecharge()
+      .on('value', function (snapshot) {
+        console.log(snapshot.val());
+        if (snapshot.val()) {
+          if (snapshot.val() === this.user.uidCard) {
+            if (this.flag === false) {
+              this.determineAcion();
+              this.flag = true;
+            }
+          }
+          // this.prueba(snapshot.val());
+        }
+      }.bind(this), function (error) {
+        console.log('Error: ' + error.code);
+      });
+  }
+
+  determineAcion() {
+    if (this.user.balance > this.bill.value) {
+      this.user.balance = this.user.balance - this.bill.value;
+      this.discount();
+    } else {
+      this.spinner.hide();
+      M.toast({ html: 'No posee saldo suficiente', classes: 'indigo darken-3 rounded' });
+      this.router.navigate(['recharge']);
+    }
+  }
+
+  discount() {
+    this.mainService.discountBalance(this.user)
+      .then(res => {
+        this.mainService.falsePayFLag();
+        this.mainService.deleteUidPay();
+        this.spinner.hide();
+        M.toast({ html: 'Pago realizado con éxito', classes: 'indigo darken-3 rounded' });
+        this.flag = false;
+        this.ref = '';
+        this.bill.value = null;
+        console.log(res);
+      }, err => {
+        this.spinner.hide();
+        this.flag = false;
+        console.log(err);
+      });
   }
 
   getUsers() {
@@ -78,12 +143,18 @@ export class PayComponent implements OnInit {
   onchange(event) {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x].uidCard === event) {
+        this.user = this.users[x];
         this.bill.email = this.users[x].email;
         this.bill.code = this.users[x].code;
-        console.log('USUARIO QUE CORRESPONDE', this.bill);
+        this.bill.ref = this.ref;
+
+        this.myDate = new Date(this.date.getTime()).toISOString();
+        this.allDate = this.myDate.replace('T', '-').split('-');
+        this.todayDate = this.allDate[0] + '-' + this.allDate[1] + '-' + this.allDate[2];
+
+        this.bill.date = this.todayDate;
       }
     }
-    console.log('evento', event);
   }
 
   initSelector() {
