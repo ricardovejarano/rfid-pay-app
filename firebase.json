@@ -5,11 +5,11 @@
   "hosting": {
     "headers": [
       {
-        "source": "/service-worker.js",
+        "source": "**/*.(jpg|jpeg|gif|png)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-cache"
+            "value": "max-age=0, no-cache"
           }
         ]
       }
