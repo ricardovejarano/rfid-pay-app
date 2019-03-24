@@ -6,50 +6,50 @@
 <body>
   <div class="container">
     <div class="row">
-      
-        <div id="card-container" class="card-panel white z-depth-3 col l6 m6 s12">
-          <form  (ngSubmit)="rechargeSubmit()" #registerForm="ngForm">
-            <div class="row center">
-              <div id="logo-login" class="input-field">
-                <h5>Selecciona usuario para recargar</h5>
-              </div>
-              <div class="input-field col s12">
-                <input id="icon_prefix" disabled type="text" [(ngModel)]="user.name" name="name" #nameUsr="ngModel"
-                  required placeholder="Nombre" class="validate">
-              </div>
-              <div class="input-field col s12">
-                <input id="icon_prefix" type="text" disabled [(ngModel)]="user.email" name="email" #emailUsr="ngModel"
-                  required email class="validate" placeholder="Correo">
-              </div>
-              <div class="input-field col s12">
-                <input id="icon_telephone" type="number" disabled [(ngModel)]="user.code" name="code" #codeUsr="ngModel"
-                  required class="validate" placeholder="Código">
-              </div>
-              <div class="input-field col s12">
-                <input id="icon_telephone" type="number" disabled [(ngModel)]="user.balance" name="balance"
-                  #balanceUsr="ngModel" required class="validate" placeholder="Balance">
-              </div>
 
-              <div class="input-field col s12">
-                <input id="icon_telephone" type="number" [(ngModel)]="valueToRecharge" name="valueToRecharge"
-                  #valueToRechargeUsr="ngModel" required class="validate" placeholder="Valor a recargar">
-              </div>
-              <div class="center-align">
-                <!--
+      <div id="card-container" class="card-panel white z-depth-3 col l6 m12 s12">
+        <form (ngSubmit)="rechargeSubmit()" #registerForm="ngForm">
+          <div class="row center">
+            <div id="logo-login" class="input-field">
+              <h5>Selecciona usuario para recargar</h5>
+            </div>
+            <div class="input-field col s12">
+              <input id="icon_prefix" disabled type="text" [(ngModel)]="user.name" name="name" #nameUsr="ngModel"
+                required placeholder="Nombre" class="validate">
+            </div>
+            <div class="input-field col s12">
+              <input id="icon_prefix" type="text" disabled [(ngModel)]="user.email" name="email" #emailUsr="ngModel"
+                required email class="validate" placeholder="Correo">
+            </div>
+            <div class="input-field col s12">
+              <input id="icon_telephone" type="number" disabled [(ngModel)]="user.code" name="code" #codeUsr="ngModel"
+                required class="validate" placeholder="Código">
+            </div>
+            <div class="input-field col s12">
+              <input id="icon_telephone" type="number" disabled [(ngModel)]="user.balance" name="balance"
+                #balanceUsr="ngModel" required class="validate" placeholder="Balance">
+            </div>
+
+            <div class="input-field col s12">
+              <input id="icon_telephone" type="number" [(ngModel)]="valueToRecharge" name="valueToRecharge"
+                #valueToRechargeUsr="ngModel" required class="validate" placeholder="Valor a recargar">
+            </div>
+            <div class="center-align">
+              <!--
                           <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!loginForm.form.valid">Ingresar</button> 
                          -->
-                <button class="teal darken-3 waves-effect waves-light btn"
-                  [disabled]="!registerForm.form.valid">Recargar</button>
-              </div>
+              <button class="teal darken-3 waves-effect waves-light btn"
+                [disabled]="!registerForm.form.valid">Recargar</button>
             </div>
-          </form>
-        
+          </div>
+        </form>
+
       </div>
 
       <div class="row center center-align">
-      <div id="scrollDiv">
-        <div class="col s4">
-          <div class="col s12" *ngFor="let user of users">
+        <div id="scrollDiv">
+
+          <div class="col s12 m12" *ngFor="let user of users">
             <div class="card horizontal hoverable">
               <div class="card-stacked">
                 <div class="card-content center center-align align-center">
@@ -64,10 +64,28 @@
                 </div>
               </div>
             </div>
+
+          </div>
+
+          <div class="col s12 m12" *ngFor="let user of users">
+            <div class="card horizontal hoverable">
+              <div class="card-stacked">
+                <div class="card-content center center-align align-center">
+                  <p>{{user.name}}</p>
+                  <p>{{user.email}}</p>
+                  <p>{{user.code}}</p>
+                  <p><b>Saldo</b></p>
+                  <p>{{user.balance}}</p>
+                </div>
+                <div class="card-action center center-align align-center">
+                  <a (click)="clickedCard(user)">Recargar</a>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </div>
 

@@ -4,11 +4,7 @@ form {
 
 
 #scrollDiv {
-    margin-top: 10px;
-    overflow: auto;
-    max-height: 95vh;
-    width: 300px;
-    overflow-x: hidden;
+
     
 }
 
@@ -16,13 +12,13 @@ div.card.horizontal.hoverable {
     min-width: 300px;
     }
 
-    @media (max-width: 600px) { 
+    @media (min-width: 1100px) { 
         #scrollDiv {
         margin-top: 10px;
-        overflow: hidden !important;
-        max-height: 505vh;
-        width: 300px;
-        overflow-x: auto !important;
+        overflow-y: scroll ;
+        max-height: 600px;
+        width: 400px;
+        overflow-x: scroll;
         
     }  
     }
