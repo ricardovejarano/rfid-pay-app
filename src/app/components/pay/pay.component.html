@@ -1,3 +1,50 @@
-<p>
-  pay works!
-</p>
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-atom">
+  <p style="font-size: 20px; color: white">Esperando autenticación RFID...</p>
+</ngx-spinner>
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+
+<body>
+  <div class="container">
+    <div class="row center">
+      <div id="card-container" class="card-panel white z-depth-3 col s6 offset-s3">
+        <div class="row center">
+          <form (ngSubmit)="registerSubmit()" #registerForm="ngForm">
+            <div class="row center">
+              <div id="logo-login" class="input-field">
+                <h5>Pago de factura</h5>
+              </div>
+              <div class="input-field col s12">
+                <input id="icon_prefix" type="text" [(ngModel)]="user.name" name="name" #nameUsr="ngModel" required
+                  class="validate">
+                <label id="placeh" for="icon_prefix">Nombre Completo</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="icon_prefix" type="text" [(ngModel)]="user.email" name="email" #emailUsr="ngModel" required
+                  email class="validate">
+                <label id="placeh" for="icon_prefix">Correo electrónico</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="icon_telephone" type="number" [(ngModel)]="user.code" name="code" #codeUsr="ngModel" required
+                  class="validate">
+                <label id="placeh" for="icon_telephone">Código</label>
+              </div>
+              <div class="input-field col s12">
+                <input id="icon_telephone" type="number" [(ngModel)]="user.balance" name="balance" #balanceUsr="ngModel"
+                  required class="validate">
+                <label id="placeh" for="icon_telephone">Balance</label>
+              </div>
+              <div class="center-align">
+                <!--
+                  <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!loginForm.form.valid">Ingresar</button> 
+                 -->
+                <button class="teal darken-3 waves-effect waves-light btn"
+                  [disabled]="!registerForm.form.valid">Registrar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
