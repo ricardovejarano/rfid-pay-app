@@ -24,7 +24,7 @@ export class MainService {
   }
 
   adduser(user: User) {
-    const myRefSale = this.afDatabase.object(`/users/${user.code}`);
+    const myRefSale = this.afDatabase.object(`/users/${user.uidCard}`);
     return myRefSale.set(user);
   }
 }

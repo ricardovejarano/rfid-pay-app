@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MainService } from 'src/app/services/main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   user: User = new User();
   done = false;
-  constructor(public spinner: NgxSpinnerService, public mainService: MainService) { }
+  constructor(public spinner: NgxSpinnerService, public mainService: MainService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -54,6 +55,7 @@ export class RegisterComponent implements OnInit {
         this.done = true;
         this.downSpinner();
         console.log('succes');
+        this.router.navigate(['']);
       }, err => {
         console.log(err);
         this.spinner.hide();
