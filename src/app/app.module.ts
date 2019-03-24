@@ -17,12 +17,16 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './components/home/home.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavBarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
