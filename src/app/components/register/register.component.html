@@ -1,13 +1,13 @@
 <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-atom">
   <p style="font-size: 20px; color: white">Esperando autenticación RFID...</p>
 </ngx-spinner>
-
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
 <body>
   <div class="container">
     <div class="row center">
       <div id="card-container" class="card-panel white z-depth-3 col s6 offset-s3">
         <div class="row center">
-          <form (ngSubmit)="registerSubmit()" #loginForm="ngForm">
+          <form (ngSubmit)="registerSubmit()" #registerForm="ngForm">
             <div class="row center">
               <div id="logo-login" class="input-field">
                 <h5>Registro de Usuario</h5>
@@ -36,7 +36,7 @@
                 <!--
                 <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!loginForm.form.valid">Ingresar</button> 
                -->
-                <button class="teal darken-3 waves-effect waves-light btn">Registrar</button>
+                <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!registerForm.form.valid">Registrar</button>
               </div>
             </div>
           </form>

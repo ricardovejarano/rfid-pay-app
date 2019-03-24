@@ -23,8 +23,19 @@ export class MainService {
     return myRefSale.set('true');
   }
 
+  falseRegisterFLag() {
+    const myRefSale = this.afDatabase.object(`flagRegister`);
+    return myRefSale.set('false');
+  }
+
+  deleteUidRegister() {
+    return firebase.database().ref(`uidRegister`).remove();
+  }
+
   adduser(user: User) {
     const myRefSale = this.afDatabase.object(`/users/${user.uidCard}`);
     return myRefSale.set(user);
   }
+
+
 }
