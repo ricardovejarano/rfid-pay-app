@@ -16,6 +16,17 @@ export class MainService {
     return firebase.database().ref(`uidRegister`);
   }
 
+  getUidCardRecharge() {
+    return firebase.database().ref(`uidPay`);
+  }
+
+  trueRegisterFLagPay() {
+    const myRefSale = this.afDatabase.object(`flagRegister`);
+    const myRefSale2 = this.afDatabase.object(`flagPay`);
+    myRefSale2.set('true');
+    return myRefSale.set('false');
+  }
+
   trueRegisterFLag() {
     const myRefSale = this.afDatabase.object(`flagRegister`);
     const myRefSale2 = this.afDatabase.object(`flagPay`);
@@ -28,8 +39,17 @@ export class MainService {
     return myRefSale.set('false');
   }
 
+  falsePayFLag() {
+    const myRefSale = this.afDatabase.object(`flagPay`);
+    return myRefSale.set('false');
+  }
+
   deleteUidRegister() {
     return firebase.database().ref(`uidRegister`).remove();
+  }
+
+  deleteUidPay() {
+    return firebase.database().ref(`uidPay`).remove();
   }
 
   adduser(user: User) {
@@ -40,6 +60,12 @@ export class MainService {
 
   getUsers() {
     return this.afDatabase.list(`users`);
+  }
+
+  updateBalance(user: User) {
+    return this.afDatabase.list(`users`).update(user.uidCard, {
+      balance: user.balance,
+    });
   }
 
 

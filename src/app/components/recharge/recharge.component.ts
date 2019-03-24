@@ -37,9 +37,52 @@ export class RechargeComponent implements OnInit {
     if (this.valueToRecharge > 0) {
       const nuevoBalance = (this.user.balance + this.valueToRecharge);
       console.log('Nuevo Balance', nuevoBalance);
+      this.user.balance = nuevoBalance;
+      this.lookForCard();
     } else {
       M.toast({ html: 'Valor erroneo', classes: 'indigo darken-3 rounded' });
     }
+  }
+
+  lookForCard() {
+    this.spinner.show();
+    this.mainService.trueRegisterFLagPay()
+      .then(res => {
+        console.log(res);
+        this.compareuidCards();
+      }, err => {
+        console.log(err);
+      });
+  }
+
+  compareuidCards() {
+    console.log('dd');
+    this.mainService.getUidCardRecharge()
+      .on('value', function (snapshot) {
+        console.log(snapshot.val());
+        if (snapshot.val()) {
+          if (snapshot.val() === this.user.uidCard) {
+            this.updateInfo();
+          }
+          // this.prueba(snapshot.val());
+        }
+      }.bind(this), function (error) {
+        console.log('Error: ' + error.code);
+      });
+  }
+
+  updateInfo() {
+    this.mainService.updateBalance(this.user)
+      .then(res => {
+        console.log(res);
+        this.spinner.hide();
+        this.mainService.falsePayFLag();
+        this.mainService.deleteUidPay();
+        M.toast({ html: 'Recarga Stisfactoria', classes: 'indigo darken-3 rounded' });
+        this.valueToRecharge = null;
+      }, err => {
+        console.log(err);
+      });
   }
 
   getUsers() {
