@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RechargeComponent } from './components/recharge/recharge.component';
 import { PayComponent } from './components/pay/pay.component';
+import { MainService } from './services/main.service';
 
 
 @NgModule({
@@ -46,7 +47,7 @@ import { PayComponent } from './components/pay/pay.component';
     AngularFireStorageModule,
     NgxSpinnerModule,
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

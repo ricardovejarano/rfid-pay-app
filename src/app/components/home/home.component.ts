@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +12,22 @@ export class HomeComponent implements OnInit {
   width = 100;
   height = 100;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
     this.initialiceParticles();
   }
 
   register() {
-    console.log('register');
+    this.router.navigate(['register']);
   }
 
   recharge() {
-    console.log('recharge');
+    this.router.navigate(['recharge']);
   }
 
   pay() {
-    console.log('pay');
+    this.router.navigate(['pay']);
   }
 
   initialiceParticles() {
