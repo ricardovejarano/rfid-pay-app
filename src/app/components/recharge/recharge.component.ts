@@ -80,6 +80,7 @@ export class RechargeComponent implements OnInit {
         this.mainService.deleteUidPay();
         M.toast({ html: 'Recarga Stisfactoria', classes: 'indigo darken-3 rounded' });
         this.valueToRecharge = null;
+        this.user = new User();
       }, err => {
         console.log(err);
       });

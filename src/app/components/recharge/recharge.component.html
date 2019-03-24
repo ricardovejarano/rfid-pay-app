@@ -49,12 +49,16 @@
       <div class="col s4">
         <h5 class="center align-center center-align">Usuarios Registrados</h5>
         <div class="col s12" *ngFor="let user of users">
-          <div class="card horizontal">
+          <div class="card horizontal hoverable">
             <div class="card-stacked">
-              <div class="card-content">
+              <div class="card-content center center-align align-center">
                 <p>{{user.name}}</p>
+                <p>{{user.email}}</p>
+                <p>{{user.code}}</p>
+                <p><b>Saldo</b></p>
+                <p>{{user.balance}}</p>
               </div>
-              <div class="card-action">
+              <div class="card-action center center-align align-center">
                 <a (click)="clickedCard(user)">Recargar</a>
               </div>
             </div>
