@@ -37,6 +37,7 @@ export class PayComponent implements OnInit {
   }
 
   paySubmit() {
+    this.bill.ref = this.ref;
     this.spinner.show();
     this.mainService.trueRegisterFLagPay()
       .then(res => {
@@ -72,7 +73,21 @@ export class PayComponent implements OnInit {
       this.discount();
     } else {
       this.spinner.hide();
-      M.toast({ html: 'No posee saldo suficiente', classes: 'indigo darken-3 rounded' });
+      this.mainService.falsePayFLag();
+      this.mainService.deleteUidPay();
+
+      let flagIntern = false;
+
+      if (!flagIntern) {
+        M.toast({ html: 'No posee saldo suficiente', classes: 'indigo darken-3 rounded' });
+        flagIntern = true;
+      }
+
+      setTimeout(() => {
+        flagIntern = false;
+      }, 500);
+
+
       this.router.navigate(['recharge']);
     }
   }
@@ -97,12 +112,20 @@ export class PayComponent implements OnInit {
   }
 
   registerBill() {
-    this.mainService.registerBill(this.bill, this.user.uidCard)
-      .then(res => {
-        console.log(res);
-      }, err => {
-        console.log(err);
-      });
+    let flagIntern = false;
+    if (!flagIntern) {
+      this.mainService.registerBill(this.bill, this.user.uidCard)
+        .then(res => {
+          console.log(res);
+        }, err => {
+          console.log(err);
+        });
+      flagIntern = true;
+    }
+
+    setTimeout(() => {
+      flagIntern = false;
+    }, 500);
   }
 
   getUsers() {

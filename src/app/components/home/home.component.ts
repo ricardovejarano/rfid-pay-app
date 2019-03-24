@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
     this.initialiceParticles();
   }
 
+  history() {
+    this.router.navigate(['history']);
+  }
+
   register() {
     this.router.navigate(['register']);
   }

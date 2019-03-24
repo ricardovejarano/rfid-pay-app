@@ -63,6 +63,10 @@ export class MainService {
     return this.afDatabase.list(`users`);
   }
 
+  getBills(uid) {
+    return this.afDatabase.list(`history/${uid}`);
+  }
+
   updateBalance(user: User) {
     return this.afDatabase.list(`users`).update(user.uidCard, {
       balance: user.balance,

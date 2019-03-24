@@ -1,0 +1,48 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-atom">
+  <p style="font-size: 20px; color: white">Esperando autenticación RFID...</p>
+</ngx-spinner>
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+
+<body>
+  <div class="container">
+    <div class="row center">
+
+      <div class="row center">
+        <form (ngSubmit)="registerSubmit()" #registerForm="ngForm">
+          <div class="row center">
+            <div id="logo-login" class="input-field">
+              <h5>Ver registro de un usuario</h5>
+            </div>
+
+            <div class="input-field col s12">
+              <select (ngModelChange)="onchange($event)" required [ngModel]="user.nombre" name="selectevent">
+                <option value="" disabled selected>Selecciona el usuario</option>
+                <option *ngFor="let user of users" value="{{user.uidCard}}">{{user.name}}</option>
+              </select>
+            </div>
+
+            <div class="col s3" *ngFor="let bill of bills">
+              <div class="card horizontal hoverable">
+                <div class="card-stacked">
+                  <div class="card-content center center-align align-center">
+                    <p><b>Referencia</b></p>
+                    <p>{{bill.ref}}</p>
+                    <p><b>Fecha</b></p>
+                    <p>{{bill.date}}</p>
+                    <p><b>Valor Pagado</b></p>
+                    <p>{{bill.value}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>

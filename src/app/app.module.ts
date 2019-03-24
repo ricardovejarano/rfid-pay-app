@@ -23,6 +23,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RechargeComponent } from './components/recharge/recharge.component';
 import { PayComponent } from './components/pay/pay.component';
 import { MainService } from './services/main.service';
+import { HistoryComponent } from './components/history/history.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MainService } from './services/main.service';
     FooterComponent,
     RegisterComponent,
     RechargeComponent,
-    PayComponent
+    PayComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
