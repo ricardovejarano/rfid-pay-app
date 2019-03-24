@@ -26,6 +26,7 @@ export class RechargeComponent implements OnInit {
   ngOnInit() {
     this.initialiceParticles();
     this.getUsers();
+    this.mainService.falsePayFLag();
   }
 
   clickedCard(userClicked: User) {

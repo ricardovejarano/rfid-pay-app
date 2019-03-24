@@ -93,6 +93,7 @@ export class PayComponent implements OnInit {
   }
 
   discount() {
+    console.log('ENRA A DISCOUNT');
     this.mainService.discountBalance(this.user)
       .then(res => {
         this.registerBill();
@@ -101,6 +102,7 @@ export class PayComponent implements OnInit {
         this.spinner.hide();
         M.toast({ html: 'Pago realizado con éxito', classes: 'indigo darken-3 rounded' });
         this.flag = false;
+        this.bill.ref = '';
         this.ref = '';
         this.bill.value = null;
         console.log(res);
