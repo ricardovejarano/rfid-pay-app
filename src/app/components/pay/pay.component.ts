@@ -80,6 +80,7 @@ export class PayComponent implements OnInit {
   discount() {
     this.mainService.discountBalance(this.user)
       .then(res => {
+        this.registerBill();
         this.mainService.falsePayFLag();
         this.mainService.deleteUidPay();
         this.spinner.hide();
@@ -91,6 +92,15 @@ export class PayComponent implements OnInit {
       }, err => {
         this.spinner.hide();
         this.flag = false;
+        console.log(err);
+      });
+  }
+
+  registerBill() {
+    this.mainService.registerBill(this.bill, this.user.uidCard)
+      .then(res => {
+        console.log(res);
+      }, err => {
         console.log(err);
       });
   }
@@ -144,7 +154,9 @@ export class PayComponent implements OnInit {
     for (let x = 0; x < this.users.length; x++) {
       if (this.users[x].uidCard === event) {
         this.user = this.users[x];
+        console.log(this.user.name);
         this.bill.email = this.users[x].email;
+        this.bill.name = this.users[x].name;
         this.bill.code = this.users[x].code;
         this.bill.ref = this.ref;
 

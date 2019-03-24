@@ -2,21 +2,21 @@ export class Bill {
 
     constructor(
         ref = '',
-        nombre = '',
+        name = '',
         email = '',
         code = '',
         value = null,
         date = '',
     ) {
         this.ref = ref;
-        this.nombre = nombre;
+        this.name = name;
         this.email = email;
         this.code = code;
         this.value = value;
         this.date = date;
     }
     ref?: string;
-    nombre?: string;
+    name?: string;
     email?: string;
     code?: string;
     value?: number;

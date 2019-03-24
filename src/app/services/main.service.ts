@@ -3,6 +3,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { User } from '../models/user';
+import { Bill } from '../models/bill';
 
 @Injectable({
   providedIn: 'root'
@@ -66,6 +67,11 @@ export class MainService {
     return this.afDatabase.list(`users`).update(user.uidCard, {
       balance: user.balance,
     });
+  }
+
+  registerBill(bill: Bill, uidCard) {
+    const myRefSale = this.afDatabase.list(`/history/${uidCard}`);
+    return myRefSale.push(bill);
   }
 
   discountBalance(user: User) {
