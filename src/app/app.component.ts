@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+  <router-outlet></router-outlet>
+  `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'rfid-pay-app';
+  rootPage: any;
+  constructor(public router: Router) {
+    this.rootPage = HomeComponent;
+  }
 }
