@@ -3,6 +3,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { MainService } from 'src/app/services/main.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { Bill } from 'src/app/models/bill';
+declare var jQuery: any;
+declare var M: any;
 
 @Component({
   selector: 'app-pay',
@@ -18,6 +21,7 @@ export class PayComponent implements OnInit {
 
   user: User = new User();
   users: User[];
+  bill: Bill = new Bill();
 
   constructor(public spinner: NgxSpinnerService, public mainService: MainService, public router: Router) { }
 
@@ -35,6 +39,7 @@ export class PayComponent implements OnInit {
           this.users.push(x as User);
         });
         console.log(this.users);
+        this.initSelector();
       });
   }
 
@@ -68,6 +73,23 @@ export class PayComponent implements OnInit {
         }
       }
     };
+  }
+
+  onchange(event) {
+    for (let x = 0; x < this.users.length; x++) {
+      if (this.users[x].uidCard === event) {
+        this.bill.email = this.users[x].email;
+        this.bill.code = this.users[x].code;
+        console.log('USUARIO QUE CORRESPONDE', this.bill);
+      }
+    }
+    console.log('evento', event);
+  }
+
+  initSelector() {
+    jQuery(document).ready(function () {
+      jQuery('select').formSelect();
+    });
   }
 
 }

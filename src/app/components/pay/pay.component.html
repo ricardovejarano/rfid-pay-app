@@ -8,37 +8,38 @@
     <div class="row center">
       <div id="card-container" class="card-panel white z-depth-3 col s6 offset-s3">
         <div class="row center">
-          <form (ngSubmit)="registerSubmit()" #registerForm="ngForm">
+          <form (ngSubmit)="paySubmit()" #billForm="ngForm">
             <div class="row center">
               <div id="logo-login" class="input-field">
                 <h5>Pago de factura</h5>
               </div>
               <div class="input-field col s12">
-                <input id="icon_prefix" type="text" [(ngModel)]="user.name" name="name" #nameUsr="ngModel" required
+                <input id="icon_prefix" type="text" [(ngModel)]="bill.ref" name="ref" #billRef="ngModel" required
                   class="validate">
-                <label id="placeh" for="icon_prefix">Nombre Completo</label>
+                <label id="placeh" for="icon_prefix">Referencia de Pago</label>
               </div>
               <div class="input-field col s12">
-                <input id="icon_prefix" type="text" [(ngModel)]="user.email" name="email" #emailUsr="ngModel" required
-                  email class="validate">
-                <label id="placeh" for="icon_prefix">Correo electrónico</label>
+                <select (ngModelChange)="onchange($event)" [ngModel]="bill.nombre" name="selectevent">
+                  <option value="" disabled selected>Selecciona el usuario</option>
+                  <option *ngFor="let user of users" value="{{user.uidCard}}">{{user.name}}</option>
+                </select>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="icon_prefix" type="text" disabled [(ngModel)]="bill.email" name="email" #emailUsr="ngModel" required
+                  email class="validate" placeholder="correo">
               </div>
               <div class="input-field col s12">
-                <input id="icon_telephone" type="number" [(ngModel)]="user.code" name="code" #codeUsr="ngModel" required
-                  class="validate">
-                <label id="placeh" for="icon_telephone">Código</label>
-              </div>
-              <div class="input-field col s12">
-                <input id="icon_telephone" type="number" [(ngModel)]="user.balance" name="balance" #balanceUsr="ngModel"
-                  required class="validate">
-                <label id="placeh" for="icon_telephone">Balance</label>
+                <input id="icon_telephone" type="number" disabled [(ngModel)]="bill.code" name="code" #codeUsr="ngModel" required
+                placeholder="codigo"  class="validate">
+                
               </div>
               <div class="center-align">
                 <!--
                   <button class="teal darken-3 waves-effect waves-light btn" [disabled]="!loginForm.form.valid">Ingresar</button> 
                  -->
                 <button class="teal darken-3 waves-effect waves-light btn"
-                  [disabled]="!registerForm.form.valid">Registrar</button>
+                  [disabled]="!billForm.form.valid">Registrar</button>
               </div>
             </div>
           </form>
