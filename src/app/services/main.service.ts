@@ -38,4 +38,9 @@ export class MainService {
   }
 
 
+  getUsers() {
+    return this.afDatabase.list(`users`);
+  }
+
+
 }
