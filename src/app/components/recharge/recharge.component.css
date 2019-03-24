@@ -15,3 +15,15 @@ form {
 div.card.horizontal.hoverable {
     min-width: 300px;
     }
+
+    @media (max-width: 600px) { 
+        #scrollDiv {
+        margin-top: 10px;
+        overflow: hidden !important;
+        max-height: 505vh;
+        width: 300px;
+        overflow-x: auto !important;
+        
+    }  
+    }
+

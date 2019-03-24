@@ -1,7 +1,17 @@
 .container {
-    height: 500px;
+    height: 550px;
 }
 
 img {
     width: 200px;
+}
+
+a {
+    margin-top: 15px;
+}
+
+@media (max-width: 600px) { 
+    .container {
+        height: 650px !important;
+    }   
 }

@@ -6,9 +6,9 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col s8">
-        <div id="card-container" class="card-panel white z-depth-3 col s6 offset-s3">
-          <form (ngSubmit)="rechargeSubmit()" #registerForm="ngForm">
+      
+        <div id="card-container" class="card-panel white z-depth-3 col l6 m6 s12">
+          <form  (ngSubmit)="rechargeSubmit()" #registerForm="ngForm">
             <div class="row center">
               <div id="logo-login" class="input-field">
                 <h5>Selecciona usuario para recargar</h5>
@@ -43,9 +43,10 @@
               </div>
             </div>
           </form>
-        </div>
+        
       </div>
 
+      <div class="row center center-align">
       <div id="scrollDiv">
         <div class="col s4">
           <div class="col s12" *ngFor="let user of users">
@@ -66,7 +67,7 @@
           </div>
         </div>
       </div>
-
+    </div>
     </div>
   </div>
 
