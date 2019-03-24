@@ -17,6 +17,18 @@ export class HomeComponent implements OnInit {
     this.initialiceParticles();
   }
 
+  register() {
+    console.log('register');
+  }
+
+  recharge() {
+    console.log('recharge');
+  }
+
+  pay() {
+    console.log('pay');
+  }
+
   initialiceParticles() {
     console.log('Inicializa');
     this.myStyle = {

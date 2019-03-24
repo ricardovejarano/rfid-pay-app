@@ -19,6 +19,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { RechargeComponent } from './components/recharge/recharge.component';
+import { PayComponent } from './components/pay/pay.component';
 
 
 @NgModule({
@@ -26,7 +29,10 @@ import { FooterComponent } from './components/footer/footer.component';
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent,
+    RechargeComponent,
+    PayComponent
   ],
   imports: [
     BrowserModule,
