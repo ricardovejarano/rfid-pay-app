@@ -27,8 +27,8 @@
 // Set these to run example.
 #define FIREBASE_HOST "rfid-pay-app.firebaseio.com"
 #define FIREBASE_AUTH "n1dB0beJWHlUB4anvEN7yfQ6eyp9sW2q8aNR7TsJ"
-#define WIFI_SSID "Familia-Vejarano"
-#define WIFI_PASSWORD "lunavejarano10"
+#define WIFI_SSID "jeisoncel"
+#define WIFI_PASSWORD "jeison95"
 MFRC522 mfrc522(SS_PIN, RST_PIN); // Instance of the class
 void setup() {
   Serial.begin(9600);
